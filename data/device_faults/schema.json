@@ -1,0 +1,9 @@
+{
+  "features": {
+    "error_code": {"type": "categorical"},
+    "io_state": {"type": "categorical"},
+    "relay_switched": {"type": "boolean"},
+    "voltage_vdd": {"type": "numeric", "range": [0, 30], "weight": 0.4}
+  },
+  "global_weights": {"error_code": 0.3, "io_state": 0.2, "relay_switched": 0.1, "voltage_vdd": 0.4}
+}

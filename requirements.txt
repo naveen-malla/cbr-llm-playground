@@ -1,0 +1,16 @@
+streamlit
+pydantic>=2
+pandas
+numpy
+scikit-learn
+sentence-transformers
+faiss-cpu
+matplotlib
+tabulate
+networkx
+python-dotenv
+pytest
+ruff
+black
+pre-commit
+requests
