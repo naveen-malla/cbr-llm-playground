@@ -1,8 +1,16 @@
-import json, numpy as np, streamlit as st
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+import streamlit as st
+
+from app.utils import render_feature_inputs
 from cbrlab.io import load_cases, load_schema
 from cbrlab.retrieval import Embedder, prepare_text
-from cbrlab.similarity.global import aggregate
+from cbrlab.similarity.global_similarity import aggregate
 from cbrlab.hybrid.rag import fuse
 
 ds = st.sidebar.selectbox("Dataset", ["device_faults","clinic_toy"])
@@ -14,14 +22,23 @@ emb = Embedder()
 emb.fit(texts)
 
 st.subheader("Hybrid symbolic + vector retrieval")
-q = st.text_area("Query", value=texts[0], height=100)
+default_case = cases[0] if cases else {"problem": {}}
+query_features = render_feature_inputs(
+    schema,
+    defaults=default_case.get("problem", {}),
+    prefix="hybrid",
+)
+st.caption("Symbolic scores use the feature values above.")
+
+q_default = texts[0] if texts else ""
+q = st.text_area("Query", value=q_default, height=100)
 alpha = st.slider("Fusion weight α (symbolic)", 0.0, 1.0, 0.5, 0.05)
 k = st.slider("Top-k", 1, 5, 3)
 
 idxs, sims = emb.topk(q, k=len(cases))
 # compute symbolic scores vs query using global similarity (problem-only demo)
 def symbolic_score(case):
-    s, _ = aggregate(case["problem"], case["problem"], schema)  # self-sim placeholder
+    s, _ = aggregate(query_features, case["problem"], schema)
     return s
 sym_scores = [symbolic_score(c) for c in cases]
 sym_sel = [sym_scores[i] for i in idxs]

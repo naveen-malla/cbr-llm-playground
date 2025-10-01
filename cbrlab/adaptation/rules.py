@@ -1,9 +1,15 @@
-import yaml
 from pathlib import Path
+
+try:
+    import yaml
+except ImportError:  # pragma: no cover - optional dependency for offline mode
+    yaml = None
 
 def load_rules(path: str | Path):
     p = Path(path)
-    return yaml.safe_load(p.read_text(encoding="utf-8")) if p.exists() else []
+    if not p.exists() or yaml is None:
+        return []
+    return yaml.safe_load(p.read_text(encoding="utf-8"))
 
 def apply_rules(rules, query: dict, case: dict, solution_text: str) -> str:
     augmented = solution_text

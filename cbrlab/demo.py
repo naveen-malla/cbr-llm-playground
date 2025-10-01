@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 from cbrlab.io import load_cases, load_schema
-from cbrlab.similarity.global import aggregate
+from cbrlab.similarity.global_similarity import aggregate
 from cbrlab.retrieval import Embedder, prepare_text
 
 def main():
