@@ -1,0 +1,10 @@
+{
+  "features": {
+    "num_missed_last_90d": {"type": "numeric", "range": [0, 6]},
+    "days_since_last_visit": {"type": "numeric", "range": [0, 180]},
+    "on_art": {"type": "boolean"},
+    "age": {"type": "numeric", "range": [12, 90]},
+    "distance_km": {"type": "numeric", "range": [0, 100]}
+  },
+  "global_weights": {"num_missed_last_90d": 0.35, "days_since_last_visit": 0.25, "on_art": 0.1, "age": 0.1, "distance_km": 0.2}
+}

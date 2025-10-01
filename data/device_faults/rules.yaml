@@ -1,0 +1,5 @@
+- name: adjust_for_voltage_delta
+  if: "abs(query.voltage_vdd - case.voltage_vdd) > 3.0"
+  action: "append_note"
+  params:
+    note: "Voltage mismatch suggests PSU or wiring; verify supply before replacing switches."
