@@ -1,0 +1,20 @@
+[
+  {
+    "id": "case-001",
+    "name": "12V Panel Relay",
+    "voltage_rating": 12,
+    "current_rating": 2.0,
+    "environment": "indoor",
+    "mounting": "panel",
+    "notes": "Baseline indoor panel relay"
+  },
+  {
+    "id": "case-002",
+    "name": "24V Outdoor Relay",
+    "voltage_rating": 24,
+    "current_rating": 1.5,
+    "environment": "outdoor",
+    "mounting": "din-rail",
+    "notes": "Weatherproofed enclosure"
+  }
+]
