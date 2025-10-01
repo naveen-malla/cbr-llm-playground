@@ -1,0 +1,14 @@
+[
+  {
+    "id": "ct-001",
+    "problem": {"num_missed_last_90d":2,"days_since_last_visit":48,"on_art":true,"age":32,"distance_km":6.2},
+    "text_problem": "Patient missed 2 of last visits; 48 days since last; on ART; 32y; lives 6.2km away.",
+    "solution": {"risk_band":"high","advice":"Call patient; arrange transport support; schedule SMS reminders."}
+  },
+  {
+    "id": "ct-002",
+    "problem": {"num_missed_last_90d":0,"days_since_last_visit":18,"on_art":true,"age":27,"distance_km":1.1},
+    "text_problem": "No missed visits; 18 days since last; on ART; 27y; 1.1km away.",
+    "solution": {"risk_band":"low","advice":"Maintain routine follow-up; standard reminder 24h before."}
+  }
+]

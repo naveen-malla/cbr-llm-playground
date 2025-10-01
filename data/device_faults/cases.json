@@ -1,0 +1,22 @@
+[
+  {
+    "id": "df-001",
+    "problem": {
+      "error_code": "i59",
+      "io_state": "out7:on",
+      "relay_switched": true,
+      "voltage_vdd": 23.8
+    },
+    "text_problem": "Device shows error i59; output out7 is on; relay rel7 switched; Vdd at 23.8V.",
+    "solution": {
+      "fault_label": "magnetic_switch_defective",
+      "steps": "Inspect rack-III MGS43 magnetic switch; reseat cable; replace if continuity fails."
+    }
+  },
+  {
+    "id": "df-002",
+    "problem": {"error_code":"p03","io_state":"out2:off","relay_switched":false,"voltage_vdd":19.7},
+    "text_problem": "Error p03; output out2 off; relay not switched; Vdd at 19.7V.",
+    "solution": {"fault_label":"undervoltage","steps":"Check PSU; ensure Vdd >= 24V; replace PSU if droop persists."}
+  }
+]
